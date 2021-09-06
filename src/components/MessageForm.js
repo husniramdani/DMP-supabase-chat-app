@@ -11,7 +11,7 @@ import { BiSend } from "react-icons/bi";
 import { useAppContext } from "../context/appContext";
 
 export default function MessageForm() {
-  const { supabase, username, country } = useAppContext();
+  const { supabase, username, country, getMessagesAndSubscribe } = useAppContext();
   const [message, setMessage] = useState("");
   const toast = useToast();
   const [isSending, setIsSending] = useState(false);
@@ -39,6 +39,8 @@ export default function MessageForm() {
         return;
       }
       console.log("Sucsessfully sent!");
+      getMessagesAndSubscribe();
+      window.location.reload();
     } catch (error) {
       console.log("error sending message:", error);
     } finally {

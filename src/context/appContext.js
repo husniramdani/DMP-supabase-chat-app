@@ -106,6 +106,7 @@ const AppContextProvider = ({ children }) => {
   };
 
   const getMessagesAndSubscribe = async () => {
+    console.log("get message")
     setError("");
     if (!mySubscription) {
       getInitialMessages();
